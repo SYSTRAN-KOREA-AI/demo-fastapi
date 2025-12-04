@@ -13,13 +13,17 @@ jobs:
   call_fastapi_deploy_template:
     uses: SYSTRAN-KOREA-AI/.github/.github/workflows/deploy-fastapi-template.yml@main
     with:
-      SERVICE_NAME: demo-fastapi
+      SERVICE_NAME: fastapi-demo
       PYTHON_VERSION: '3.11.9'
       BASE_REMOTE_PATH: /opt/business_meeting
+      PROFILE: ${{ (github.event.inputs.server == '27' && 'dev') || (github.event.inputs.server == '26' && 'stage') || (github.event.inputs.server == '195' && 'prod') }}
     secrets:
+      # Pass all potential config secrets
+      ENV_DEV_FILE: ${{ secrets.ENV_DEV_FILE }}
+      ENV_STAGE_FILE: ${{ secrets.ENV_STAGE_FILE }}
+      ENV_PROD_FILE: ${{ secrets.ENV_PROD_FILE }}
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      # No APP_YML or ENV_FILE needed for this backend build
       PREFIX_HOST: ${{ github.event.inputs.server == '195' && secrets.SERVER_195_HOST || github.event.inputs.server == '26' && secrets.SERVER_26_HOST || secrets.SERVER_27_HOST }}
       PREFIX_PORT: ${{ github.event.inputs.server == '195' && secrets.SERVER_195_PORT || github.event.inputs.server == '26' && secrets.SERVER_26_PORT || secrets.SERVER_27_PORT }}
       PREFIX_USER: ${{ github.event.inputs.server == '195' && secrets.SERVER_195_USER || github.event.inputs.server == '26' && secrets.SERVER_26_USER || secrets.SERVER_27_USER }}
