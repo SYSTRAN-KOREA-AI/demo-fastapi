@@ -1,0 +1,76 @@
+# -------------------------
+# Python / FastAPI 기본
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+
+# Byte-compiled / cache
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Virtual environment (venv)
+.venv/
+venv/
+ENV/
+env/
+
+# pip wheel build artifacts
+*.egg-info/
+*.egg
+dist/
+build/
+
+# VSCode / PyCharm / IDE
+.vscode/
+.idea/
+*.iml
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pyright
+typings/
+
+# FastAPI static files (optional)
+staticfiles/
+static/
+media/
+
+# dotenv / secrets
+.env
+*.env
+.env.*
+.envrc
+secrets/
+config/
+
+# Uvicorn PID files / cache
+*.pid
+
+# Ignore local scripts / debug folders
+scripts_local/
+debug/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
